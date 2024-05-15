@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
+    // Register Api(POST)
     public function register(Request $request)
     {
         $request->validate([
@@ -29,6 +30,8 @@ class ApiController extends Controller
             "message" => "Successfully created a new user"
         ], 200);
     }
+
+    // Login Api(POST)
     public function login(Request $request)
     {
         $request->validate([
@@ -55,6 +58,8 @@ class ApiController extends Controller
             ], 404);
         }
     }
+
+    // Profile Api(GET)
     public function profile()
     {
         $user = Auth::user();
@@ -65,6 +70,8 @@ class ApiController extends Controller
             "data" => $user
         ], 200);
     }
+
+    // Logout Api(GET)
     public function logout()
     {
         auth()->user()->token()->revoke();
